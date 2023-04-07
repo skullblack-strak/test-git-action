@@ -18,4 +18,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: c33637c2d2f418489cda1f896fdadde6
-          command: pages publish --project-name=gha-workshop --branch main ./
+          command: pages publish --project-name=tan-workshop --branch main ./
