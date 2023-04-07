@@ -1,0 +1,21 @@
+name: Build & Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-static-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        env:
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: c33637c2d2f418489cda1f896fdadde6
+          command: pages publish --project-name=gha-workshop --branch main ./
